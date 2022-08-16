@@ -1,3 +1,7 @@
+package Bst;
+
+import Bst.Bst;
+
 public class BstClient {
     public static void main(String[] args) {
         Bst tree = new Bst();

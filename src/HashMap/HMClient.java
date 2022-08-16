@@ -1,3 +1,7 @@
+package HashMap;
+
+import HashMap.HashMapImplementation;
+
 public class HMClient {
     public static void main(String[] args) {
         HashMapImplementation<String, Integer> hm = new HashMapImplementation<>();

@@ -1,3 +1,5 @@
+package Bst;
+
 public class Bst {
     private class Node {
         int data;
