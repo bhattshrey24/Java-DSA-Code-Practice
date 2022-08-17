@@ -16,7 +16,7 @@ public class HeapUsingArray_Implementation { // We are making min heap
     }
 
     public int getParentIdx(int node) {
-        int idx = (node - 1) / 2;
+        int idx = (node) / 2;
         return idx;
     }
 
@@ -26,7 +26,7 @@ public class HeapUsingArray_Implementation { // We are making min heap
     }
 
     public int getLeftIdx(int node) {
-        int idx = 2 * node + 2;
+        int idx = 2 * node;
         return idx;
     }
 
@@ -58,35 +58,42 @@ public class HeapUsingArray_Implementation { // We are making min heap
         heapArr[j] = temp;
     }
 
-    public void deleteElement() { // always the root node is deleted ,  tc - O(logn)
-        if (currSizeOfHeap == 1) {
+    public boolean deleteElement() { // always the root node is deleted ,  tc - O(logn), This functions returns whether deletion was successful or not
+        if (currSizeOfHeap <= 1) {
             System.out.println("Heap is empty can't delete");
+            return false; // i.e. deletion was not successful because there is no element left to delete
         }
-        // overwrite root element with last element of heap
-        heapArr[1] = heapArr[(currSizeOfHeap - 1)];
-        int currNodeIdx = 1;
 
+        //Step 1:  overwrite root element with last element of heap
+        heapArr[1] = heapArr[(currSizeOfHeap - 1)];
+
+        //Step 2:  delete last element by putting infinity
+        heapArr[(currSizeOfHeap - 1)] = Integer.MAX_VALUE;
+
+        // Step 3: rearrange from top to bottom so that it follows the heap property
+        int currNodeIdx = 1;
         while (currSizeOfHeap > currNodeIdx) {
-            // check out of bound
+
             int currNodeValue = heapArr[currNodeIdx];
             int currNodeLeftChildIdx = getLeftIdx(currNodeIdx);
-            int currNodeLeftChildValue = heapArr[currNodeLeftChildIdx];
             int currNodeRightChildIdx = getRightIdx(currNodeIdx);
-            int currNodeRightChildValue = heapArr[currNodeRightChildIdx];
 
-            if (getLeftIdx(currNodeIdx) < currSizeOfHeap && getRightIdx(currNodeIdx) < currSizeOfHeap) {
-                int minOfChildren = Math.min(currNodeLeftChildValue, currNodeRightChildValue);
-                if (minOfChildren == currNodeLeftChildValue) {
-                    swapElements(currNodeLeftChildIdx, currNodeIdx);
-                    currNodeIdx = currNodeLeftChildIdx;
+            if (currNodeLeftChildIdx < currSizeOfHeap && currNodeRightChildIdx < currSizeOfHeap) {
+                int currNodeLeftChildValue = heapArr[currNodeLeftChildIdx];
+                int currNodeRightChildValue = heapArr[currNodeRightChildIdx];
+
+                int smallerChildsIdx = currNodeLeftChildValue > currNodeRightChildValue ? currNodeRightChildIdx : currNodeLeftChildIdx;
+
+                if (heapArr[currNodeIdx] > heapArr[smallerChildsIdx]) {
+                        swapElements(smallerChildsIdx, currNodeIdx);
+                        currNodeIdx = smallerChildsIdx;
                 } else {
-                    swapElements(currNodeRightChildIdx, currNodeIdx);
-                    currNodeIdx = currNodeRightChildIdx;
+                        break;
                 }
-            } else if (getLeftIdx(currNodeIdx) < currSizeOfHeap) {
+            } else if (currNodeLeftChildIdx < currSizeOfHeap && heapArr[currNodeLeftChildIdx] < currNodeValue) {
                 swapElements(currNodeLeftChildIdx, currNodeIdx);
                 currNodeIdx = currNodeLeftChildIdx;
-            } else if (getRightIdx(currNodeIdx) < currSizeOfHeap) {
+            } else if (currNodeRightChildIdx < currSizeOfHeap && heapArr[currNodeRightChildIdx] < currNodeValue) {
                 swapElements(currNodeRightChildIdx, currNodeIdx);
                 currNodeIdx = currNodeRightChildIdx;
             } else {
@@ -94,6 +101,7 @@ public class HeapUsingArray_Implementation { // We are making min heap
             }
         }
         currSizeOfHeap--;
+        return true;
     }
 
     public int peak() {
