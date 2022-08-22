@@ -39,7 +39,7 @@ public class QuickSort {
         // inside while loop
 
         int pivot = arr[high]; // we consider the high element as
-        // pivot , we can also take low as pivot too
+        // pivot , we can also take low as pivot , or mid (ie. (high+low)/2) as pivot or any random element in between low and high as pivot
 
         int i = low - 1; // low -1 cause initially we are assuming that there
         // is no element smaller than pivot
@@ -51,7 +51,7 @@ public class QuickSort {
 
             if (arr[j] < pivot) { // here the logic is that if we put all the elements
                 // smaller than pivot on its left then obviously all the elements bigger
-                // than pivot will automatically be placed at its right
+                // than p ivot will automatically be placed at its right
                 i++; // we found element smaller than pivot so lets make space for it and simply swap it
                 swap(arr, i, j);
             }
@@ -71,21 +71,3 @@ public class QuickSort {
     }
 
 }
-//    public static int partition(int arr[], int low, int high) {
-//        int i = low+1 , j = high;
-//
-//        int pivot = arr[low]; // we consider the low element as
-//        // pivot , we can also take high as pivot too
-//
-//        while (i < j) {
-//            while (arr[i] <= pivot ) i++;
-//            while (arr[j] > pivot ) j--;
-//            if (i <j) {// this check will
-//                swap(arr, i, j);
-//            }
-//        }
-//
-//        swap(arr, j, low);
-//
-//        return j; // returning index where we placed pivot element
-//    }
