@@ -25,10 +25,10 @@ public class BFS {
 
     // It is equivalent to level order of tree
     // (rm*wa*) Remove work mark add
-    public static void printBfsPath(WeightedUndirectedGraph_Imp grf, int sourceVertex) {
+    public static void printBfsPath(WeightedUndirectedGraph_Imp grf, int startVertex) {
         ArrayDeque que = new ArrayDeque<Pair>();
         boolean isVisited[] = new boolean[grf.adj.length];
-        que.add(new Pair(sourceVertex, sourceVertex + ""));
+        que.add(new Pair(startVertex, startVertex + ""));
 
         while (!que.isEmpty()) {
             //Remove
@@ -83,7 +83,9 @@ public class BFS {
 
             //Add
             for (WeightedUndirectedGraph_Imp.Edge neighbor : grf.adj[removedNode.vertice]) {
-                que.add(new Pair(neighbor.vertice, removedNode.psf + neighbor.vertice));
+                if (!isVisited[neighbor.vertice]) {
+                    que.add(new Pair(neighbor.vertice, removedNode.psf + neighbor.vertice));
+                }
             }
         }
         System.out.println("Element found and its value is : " + node.vertice + " and the path bfs had taken is :" + node.psf);
