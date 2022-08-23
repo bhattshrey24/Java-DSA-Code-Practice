@@ -6,18 +6,18 @@ public class WeightedDirectedGraph_Imp {
 
     public LinkedList<Edge> adj[];// array of type 'LinkedList<Edge>' Aka adjacency matrix
 
-    public WeightedDirectedGraph_Imp(int v) {
-        adj = new LinkedList[v];// we are initializing adj array , we are just telling its size
+    public WeightedDirectedGraph_Imp(int NumberOfVertices) {
+        adj = new LinkedList[NumberOfVertices];// we are initializing adj array , we are just telling its size
 
-        for (int i = 0; i < v; i++) { // assuming vertices starts from 0
+        for (int i = 0; i < NumberOfVertices; i++) { // assuming vertices starts from 0
             adj[i] = new LinkedList<Edge>();// we are connecting a empty linked list to every vertex i.e element of
             // array adj
         }
     }
 
-    class Edge { // it will look like a[1]=>(v:2,w:8)->(v:4,w:5)
-        int vertice;
-        int weight;
+   public class Edge { // it will look like a[1]=>(v:2,w:8)->(v:4,w:5)
+        public int vertice;
+        public int weight;
 
         Edge(int v, int w) {
             vertice = v;

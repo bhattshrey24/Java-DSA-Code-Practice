@@ -6,21 +6,21 @@ public class WeightedUndirectedGraph_Imp{
 
     public LinkedList<Edge> adj[];// array of linked List
 
-    public WeightedUndirectedGraph_Imp(int v) {
-        adj = new LinkedList[v];// we are initializing adj array , we are just telling its size like int []a;
+    public WeightedUndirectedGraph_Imp(int NumberOfVertices) {
+        adj = new LinkedList[NumberOfVertices];// we are initializing adj array , we are just telling its size like int []a;
         // a=new int[v];
 
-        for (int i = 0; i < v; i++) { // assuming vertices starts from 0
+        for (int i = 0; i < NumberOfVertices; i++) { // assuming vertices starts from 0
             adj[i] = new LinkedList<Edge>();// we are connecting a empty linked list to every vertex i.e element of
             // array adj
         }
 
     }
 
-    static class Edge { // Our graph is made of linkedlist of 'Edge' class instead of 'Integer'
+    public static class Edge { // Our graph is made of linkedlist of 'Edge' class instead of 'Integer'
         // the graph will look like a[1]=>(v:2,w:8)->(v:4,w:5)
-        int vertice;
-        int weight;
+        public int vertice;
+        public int weight;
 
         Edge(int v, int w) {
             vertice = v;
