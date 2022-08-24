@@ -16,17 +16,18 @@ public class DFS {
         grf.addEdge(5, 6, 10);
         grf.addEdge(6, 4, 10);
 
-        dfsPathClient(grf, 0);
+        dfsPathUtil(grf, 0);
         dfsIterative(grf, 4);
 
     }
 
 
     //RMWA
-    public static void dfsPathClient(WeightedUndirectedGraph_Imp grf, int startVertex) {
+    public static void dfsPathUtil(WeightedUndirectedGraph_Imp grf, int startVertex) {
         dfsPath(grf, startVertex, new boolean[grf.adj.length], startVertex + "");
     }
 
+   // Here the stack is the memory stack which recursion will create
     public static void dfsPath(WeightedUndirectedGraph_Imp grf, int currVertex, boolean[] isVisited, String psf) {
         // Check
         if (isVisited[currVertex]) { // base case
@@ -44,14 +45,18 @@ public class DFS {
                 dfsPath(grf, neighbor.vertice, isVisited, psf + neighbor.vertice);
             }
         }
+
     }
 
     public static void dfsIterative(WeightedUndirectedGraph_Imp grf, int eleToBeFound) {
-        Stack stack = new Stack();
+        Stack stack = new Stack(); // The only difference btw dfs iterative implementation and bfs
+        // implementation is that we used stack here
+
         Pair node = new Pair(-1, ""); // -1 means no element found
         boolean isVisited[] = new boolean[grf.adj.length];
 
         stack.push(new Pair(0, 0 + ""));// starting from 0
+
 
         while (!stack.isEmpty()) {
             //Remove
