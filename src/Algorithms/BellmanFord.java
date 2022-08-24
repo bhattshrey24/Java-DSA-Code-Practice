@@ -44,7 +44,9 @@ public class BellmanFord {
     // have 2 vertices A and B and there are 2 paths to reach B from A like one is direct and
     // other one consists of 3 edges so the path with 1 edge will be considered in 1st
     // iteration of bellman ford and in 3rd iteration we will compare this 1 edge path with 3 edge path
-    // and choose the smaller one
+    // and choose the smaller one. It is possible that bellman ford calculates answer for 3
+    // edge path in iteration 1 or 2 but it's Guaranteed that in 3rd iteration it will be
+    // calculated for sure if not calculated in previous iterations.
 
     // in the end in our solution array we will have The Shortest distance from source to all vertices.
 

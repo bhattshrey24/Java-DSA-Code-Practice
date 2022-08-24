@@ -2,7 +2,8 @@ package Algorithms;
 
 public class BinarySearch {
     public static void main(String args[]) {
-        int arr[] = new int[]{1, 3, 5, 7, 10, 15, 17, 19, 20, 21, 22, 24, 25};
+
+          int arr[] = new int[]{1, 3, 5, 7, 10, 15, 17, 19, 20, 21, 22, 24, 25};
 //        int arr[] = new int[]{1, 1, 1, 1, 2, 2, 2, 3, 3, 19, 19, 19,};
 //        int arr[] = new int[]{1, 3, 5};
 //        int arr[] = new int[]{1, 3};
