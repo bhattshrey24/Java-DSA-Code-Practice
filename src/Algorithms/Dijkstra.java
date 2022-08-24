@@ -21,11 +21,13 @@ public class Dijkstra {
 
     }
 
-    // We use dijktras if we want to find shortest path from A to B in terms of weight
-    // Dijktras do not work for -ve weights
-    // Dijktras is same as BFS the difference is just that here instead of
+    // Dijkstra AKA Single Source Shortest Path
+    // We use Dijkstra if we want to find the shortest path from A to B in terms of weight
+    // Dijkstra may or may not work for -ve weights
+    // Dijkstra is same as BFS the difference is just that here instead of
     // Queue we will use PriorityQueue
-    // Tc of dijkstra is :
+    // It Uses Greedy Approach since it chooses the best path at every step
+    // Tc of dijkstra is : O(ELogV)
     public static void dijkstra(WeightedUndirectedGraph_Imp grf, int startVertex, int destinationVertex) {
         PriorityQueue pq = new PriorityQueue<Pair>();
 
@@ -51,7 +53,11 @@ public class Dijkstra {
 
             for (WeightedUndirectedGraph_Imp.Edge neighbor : grf.adj[removedNode.vertex]) {
                 if (!isVisited[neighbor.vertice]) {
-                    pq.add(new Pair(neighbor.vertice, removedNode.cost + neighbor.weight, removedNode.psf + neighbor.vertice));
+                    pq.add(new Pair(
+                            neighbor.vertice,
+                            removedNode.cost + neighbor.weight,
+                            removedNode.psf + neighbor.vertice)); // weight is simply edge
+                    // cost/weight that is joining removedNode with neighbor
                 }
             }
         }
