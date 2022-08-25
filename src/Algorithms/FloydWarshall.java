@@ -29,6 +29,7 @@ public class FloydWarshall {
     // times and in the end answer 2d matrix will be our answer
 
     // Here infinity means no path possible
+    // This algorithm can also work with negative weights
 
     //TC - O(V^3)
     public static void floydWarshall(WeightedDirectedGraph_Imp grf) {
