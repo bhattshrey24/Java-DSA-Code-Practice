@@ -26,6 +26,7 @@ public class BFS {
     // It is equivalent to level order of tree
     // (rm*wa*) Remove work mark add
     // If you want to find the shortest path in terms of edges use BFS since it moves in radius
+    // TC is O(V+E)
     public static void printBfsPath(WeightedUndirectedGraph_Imp grf, int startVertex) {
         ArrayDeque que = new ArrayDeque<Pair>();
         boolean isVisited[] = new boolean[grf.adj.length];
