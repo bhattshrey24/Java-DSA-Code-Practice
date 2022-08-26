@@ -3,10 +3,9 @@ package Algorithms;
 import Graph.WeightedUndirectedGraph_Imp;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Dijkstra {
+public class Dijkstra1 {
     public static void main(String args[]) {
         WeightedUndirectedGraph_Imp grf = new WeightedUndirectedGraph_Imp(10);
         grf.addEdge(0, 1, 10);
@@ -17,6 +16,7 @@ public class Dijkstra {
         grf.addEdge(4, 5, 3);
         grf.addEdge(5, 6, 3);
         grf.addEdge(6, 4, 8);
+
         dijkstra(grf, 0, 6);
 
     }
@@ -38,28 +38,28 @@ public class Dijkstra {
         pq.add(new Pair(startVertex, 0, startVertex + ""));
 
         while (!pq.isEmpty()) {
-            Pair removedNode = (Pair) pq.remove();
+                Pair removedNode = (Pair) pq.remove();
 
-            if (isVisited[removedNode.vertex]) {
-                continue;
-            }
-
-            isVisited[removedNode.vertex] = true;
-
-            if (removedNode.vertex == destinationVertex) {
-                ans = removedNode;
-                break;
-            }
-
-            for (WeightedUndirectedGraph_Imp.Edge neighbor : grf.adj[removedNode.vertex]) {
-                if (!isVisited[neighbor.vertice]) {
-                    pq.add(new Pair(
-                            neighbor.vertice,
-                            removedNode.cost + neighbor.weight,
-                            removedNode.psf + neighbor.vertice)); // weight is simply edge
-                    // cost/weight that is joining removedNode with neighbor
+                if (isVisited[removedNode.vertex]) {
+                    continue;
                 }
-            }
+
+                isVisited[removedNode.vertex] = true;
+
+                if (removedNode.vertex == destinationVertex) {
+                    ans = removedNode;
+                    break;
+                }
+
+                for (WeightedUndirectedGraph_Imp.Edge neighbor : grf.adj[removedNode.vertex]) {
+                    if (!isVisited[neighbor.vertice]) {
+                        pq.add(new Pair(
+                                neighbor.vertice,
+                                removedNode.cost + neighbor.weight,
+                                removedNode.psf + neighbor.vertice)); // weight is simply edge
+                        // cost/weight that is joining removedNode with neighbor
+                    }
+                }
         }
         System.out.println("Found Element " + ans.vertex + " at a cost of " + ans.cost + " units " +
                 "distance and the path taken by dijkstra is : " + ans.psf);
