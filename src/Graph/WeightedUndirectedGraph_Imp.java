@@ -2,7 +2,7 @@ package Graph;
 
 import java.util.LinkedList;
 
-public class WeightedUndirectedGraph_Imp{
+public class WeightedUndirectedGraph_Imp {
 
     public LinkedList<Edge> adj[];// array of linked List
 
