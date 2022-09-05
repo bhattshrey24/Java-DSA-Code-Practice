@@ -42,10 +42,13 @@ public class Kruskal {
     // if vertices are in same group then no need to connect because it means you have already
     // connected them using smaller weights. Sorting ensures that we always choose the smallest
     // possible edge and DSU makes sure that graph is connected.
+    // TC = O(ELogE) since we sort the edges. Now again this is equal to
+    // O(ELogV) because E at max can equal to V^2 therefore if you put that in equation
+    // you'll get => O(ElogV^2) =O(2ELogV) = O(ELogV)
 
 
     // Difference between prims and kruskal :-
-    // https://www.gatevidyalay.com/prims-and-kruskal-algorithm-difference/
+    // https://www.geeksforgeeks.org/difference-between-prims-and-kruskals-algorithm-for-mst/
     // One major difference is that the tree that we are making in prims is always
     // connected whereas the tree that we are making in kruskal usually remains disconnected
     // because we pick edges randomly based on smallest edge weights
