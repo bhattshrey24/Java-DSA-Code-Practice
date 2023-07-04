@@ -34,15 +34,15 @@ public class Dijkstra2 {
     // cause obviously TC of dijkstra is better than bellman ford but
     // if your graph has -ve weight then you have to use bellman ford only
     public static void dijkstra2(WeightedDirectedGraph_Imp grf, int startVertex) {
-        int ans[] = new int[grf.adj.length];
+        int[] ans = new int[grf.adj.length];
 
-        boolean isVisited[] = new boolean[grf.adj.length];
-        PriorityQueue pq = new PriorityQueue<Pair>();
+        boolean[] isVisited = new boolean[grf.adj.length];
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
 
         pq.add(new Pair(startVertex, 0));
 
         while (!pq.isEmpty()) {
-            Pair removedNode = (Pair) pq.remove();
+            Pair removedNode = pq.remove();
 
             if (isVisited[removedNode.vertex]) {
                 continue;

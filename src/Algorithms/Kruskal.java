@@ -54,14 +54,12 @@ public class Kruskal {
     // because we pick edges randomly based on smallest edge weights
     public static void kruskal(ArrayList<Pair> edges, int numOfVertices) { // here edges[r][c] r represents the vertex 'v' and c represents vertex 'u' and the weight of these edges will be stored in the matrix
         //Preprocessing for DSU
-        int parent[] = new int[numOfVertices];
+        int[] parent = new int[numOfVertices];
         for (int i = 0; i < parent.length; i++) {
             parent[i] = i;
         }
-        int rank[] = new int[numOfVertices];
-        for (int i = 0; i < rank.length; i++) {
-            rank[i] = 1;
-        }
+        int[] rank = new int[numOfVertices];
+        Arrays.fill(rank, 1);
 
         int mspWeight = 0;
         Collections.sort(edges); // Sorting the edges based on the edge weight ,  Collections.sort

@@ -13,11 +13,10 @@ public class BFS {
         grf.addEdge(0, 1, 10);
         grf.addEdge(1, 2, 10);
         grf.addEdge(2, 3, 10);
-        grf.addEdge(3, 0, 10);
         grf.addEdge(3, 4, 10);
         grf.addEdge(4, 5, 10);
         grf.addEdge(5, 6, 10);
-        grf.addEdge(6, 4, 10);
+        grf.addEdge(6, 3, 10);
 
         BFS.printBfsPath(grf, 2);
         BFS.bfsSearch(grf, 6);
@@ -28,13 +27,13 @@ public class BFS {
     // If you want to find the shortest path in terms of edges use BFS since it moves in radius
     // TC is O(V+E)
     public static void printBfsPath(WeightedUndirectedGraph_Imp grf, int startVertex) {
-        ArrayDeque que = new ArrayDeque<Pair>();
-        boolean isVisited[] = new boolean[grf.adj.length];
+        ArrayDeque<Pair> que = new ArrayDeque<>();
+        boolean[] isVisited = new boolean[grf.adj.length];
         que.add(new Pair(startVertex, startVertex + ""));
 
         while (!que.isEmpty()) {
             //Remove
-            Pair removedNode = (Pair) que.remove();
+            Pair removedNode =  que.remove();
 
             //Check
             if (isVisited[removedNode.vertice]) {
@@ -57,8 +56,8 @@ public class BFS {
     }
 
     public static void bfsSearch(WeightedUndirectedGraph_Imp grf, int nodeToBeFound) {
-        ArrayDeque que = new ArrayDeque<Pair>();
-        boolean isVisited[] = new boolean[grf.adj.length];
+        ArrayDeque<Pair> que = new ArrayDeque<>();
+        boolean[] isVisited = new boolean[grf.adj.length];
 
         Pair node = new Pair(-1, ""); // -1 means node not found
 
@@ -67,7 +66,7 @@ public class BFS {
         while (!que.isEmpty()) {
 
             //Remove
-            Pair removedNode = (Pair) que.remove();
+            Pair removedNode = que.remove();
 
             //Check
             if (isVisited[removedNode.vertice]) {

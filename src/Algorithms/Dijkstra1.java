@@ -28,17 +28,19 @@ public class Dijkstra1 {
     // Queue we will use PriorityQueue
     // It Uses Greedy Approach since it chooses the best path at every step
     // Tc of dijkstra is : O(ELogV)
+    // see the '15 may' vid from 3:40:00 onwards to understand with examples
     public static void dijkstra(WeightedUndirectedGraph_Imp grf, int startVertex, int destinationVertex) {
-        PriorityQueue pq = new PriorityQueue<Pair>();
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
 
-        boolean isVisited[] = new boolean[grf.adj.length];
+        boolean[] isVisited = new boolean[grf.adj.length];
 
-        Pair ans = new Pair(-1, -1, "");
+        Pair ans = new Pair(0, -1, ""); // this is a dummy node ,
+        // this will be replaced by actual answer
 
         pq.add(new Pair(startVertex, 0, startVertex + ""));
 
         while (!pq.isEmpty()) {
-                Pair removedNode = (Pair) pq.remove();
+                Pair removedNode = pq.remove();
 
                 if (isVisited[removedNode.vertex]) {
                     continue;

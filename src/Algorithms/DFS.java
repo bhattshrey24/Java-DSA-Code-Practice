@@ -10,11 +10,10 @@ public class DFS {
         grf.addEdge(0, 1, 10);
         grf.addEdge(1, 2, 10);
         grf.addEdge(2, 3, 10);
-        grf.addEdge(3, 0, 10);
         grf.addEdge(3, 4, 10);
         grf.addEdge(4, 5, 10);
         grf.addEdge(5, 6, 10);
-        grf.addEdge(6, 4, 10);
+        grf.addEdge(6, 3, 10);
 
         dfsPathUtil(grf, 0);
         dfsIterative(grf, 4);
@@ -49,18 +48,18 @@ public class DFS {
     }
 
     public static void dfsIterative(WeightedUndirectedGraph_Imp grf, int eleToBeFound) {
-        Stack stack = new Stack(); // The only difference btw dfs iterative implementation and bfs
+        Stack<Pair> stack = new Stack<>(); // The only difference btw dfs iterative implementation and dfs
         // implementation is that we used stack here
 
         Pair node = new Pair(-1, ""); // -1 means no element found
-        boolean isVisited[] = new boolean[grf.adj.length];
+        boolean[] isVisited = new boolean[grf.adj.length];
 
         stack.push(new Pair(0, 0 + ""));// starting from 0
 
 
         while (!stack.isEmpty()) {
             //Remove
-            Pair removedVertex = (Pair) stack.pop();
+            Pair removedVertex = stack.pop();
             //Check
             if (isVisited[removedVertex.vertice]) {
                 continue;

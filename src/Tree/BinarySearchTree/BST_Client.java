@@ -1,8 +1,8 @@
-package Bst;
+package Tree.BinarySearchTree;
 
-import Bst.Bst;
+import Tree.BinarySearchTree.Bst;
 
-public class BstClient {
+public class BST_Client {
     public static void main(String[] args) {
         Bst tree = new Bst();
         tree.add(50);

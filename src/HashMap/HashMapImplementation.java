@@ -1,7 +1,6 @@
 package HashMap;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 public class HashMapImplementation<K, V> {
 
@@ -110,7 +109,7 @@ public class HashMapImplementation<K, V> {
         int abshc = Math.abs(hc);// abshc = absolute hash code , in case hashCode() returns -ve code so we are
         // just converting it to positive
 
-        return abshc % buckets.length; // doing modulous cause we need a number from 0 to bucket.length - 1 only cause
+        return abshc % buckets.length; // doing modulus because we need a number from 0 to bucket.length - 1 only cause
         // it will act as a index .
     }
 

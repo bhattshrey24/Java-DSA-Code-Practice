@@ -1,6 +1,5 @@
 package Algorithms;
 
-import Graph.WeightedDirectedGraph_Imp;
 import Graph.WeightedUndirectedGraph_Imp;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,12 +47,17 @@ public class Prims {
     // took(ie. removedNode.weight +neighbor.weight). But logically both are very different
     // dijkstra tries to find minimum PATH between 2 Nodes whereas Prims tries to
     // find minimum path, but it won't let graph to be disconnected basically will generate MSP
-    // see the '15 may' vid from 3:45:00 onwards to understand the difference with examples
+    // See the '15 may' vid from 2:54:00 onwards to understand prims
+    // see https://www.youtube.com/watch?v=f__RNJ1IAvY&t=21s or '15 may' vid from 3:48:00 onwards to understand the difference with examples
 
     // Prims only works for undirected graph because Prims algorithm
     // assumes that all vertices are connected. But in a directed graph,
     // every node is not reachable from every other node. So, Prims
-    // algorithm fails due to this reason.
+    // algorithm fails due to this reason. And I guess it works for negative edge as well
+
+    // The graph must be connected, meaning that there is a path between any pair of vertices.
+    // If the graph is not connected, there will be multiple spanning trees, one for each
+    // connected component
 
     //TC=O(ELogE) which is same as ELogV because we know that at max number of
     // edges can be E=V^2. So if you put this in ELogE you'll get ELogV
@@ -74,7 +78,7 @@ public class Prims {
 
         pq.add(new Pair(0, 0)); // weight 0 because we won't assign
         // an edge to source vertex since 1 vertex has to have 0 edge
-        // assigned to it other how will we be able to generate a msp with V-1 edges
+        // assigned to it otherwise how will we be able to generate a msp with V-1 edges
 
         while (!pq.isEmpty()) {
 
