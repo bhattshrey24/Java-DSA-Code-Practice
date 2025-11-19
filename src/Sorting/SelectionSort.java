@@ -10,15 +10,19 @@ public class SelectionSort {
         }
     }
 
+    // To see if this code passes all test cases goto https://www.geeksforgeeks.org/problems/selection-sort/1
+
     public static void selectionSort(int arr[]) { // TC - O(n^2)
-       // at each pass we find the smallest element in the array and put it in its correct position
-        int lowestEleIdx;
-        for (int i = 0; i < arr.length; i++) {
-            lowestEleIdx = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                lowestEleIdx = arr[lowestEleIdx] > arr[j] ? j : lowestEleIdx;
-            }// after the for loop 'lowestEleIdx' will be holding the index of the smallest element in the remaining array
-            swapElements(arr, i, lowestEleIdx);
+       // at each pass we find the smallest element in the array and put it in its
+        // correct position
+        int smallestEleIdx;
+        for (int i = 0; i < arr.length; i++) {// After each iteration elements before i are sorted
+            smallestEleIdx = i;
+            for (int curr = i + 1; curr < arr.length; curr++) {
+                smallestEleIdx = arr[smallestEleIdx] > arr[curr] ? curr : smallestEleIdx;
+            }// after the for loop 'lowestEleIdx' will be holding the index of the smallest element
+            // in the remaining array
+            swapElements(arr, i, smallestEleIdx);
         }
 
     }

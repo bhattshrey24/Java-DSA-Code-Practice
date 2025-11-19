@@ -10,21 +10,23 @@ public class BubbleSort {
         }
     }
 
-    public static void bubbleSort(int arr[]) { // TC - O(n^2)
+    // To see if this code passes all test cases goto https://www.geeksforgeeks.org/problems/bubble-sort/1
+
+    public static void bubbleSort(int[] arr) {// TC - O(n^2)
         // After 1st pass the biggest element will be at the last of array
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 1; j < arr.length; j++) {
-                if (arr[j - 1] > arr[j]) {
-                    swapElements(arr, j, j - 1);
+        int n = arr.length;
+        for(int count = 0; count < n - 1 ; count++){ // Just take decreasing order array (i.e. worst case) and see how many time we have to run the algorithm to make it sorted in ascending order
+            for(int i = 0; i < n - 1 ; i++){ // n-1 because otherwise we will get out of bound error when we do arr[i+1]
+                if(arr[i]>arr[i+1]){
+                    swapElements(i,i+1,arr);
                 }
             }
         }
-
     }
 
-    public static void swapElements(int arr[], int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    public static void swapElements(int p1 , int p2 , int []arr){
+        int temp = arr[p1];
+        arr[p1]=arr[p2];
+        arr[p2]=temp;
     }
 }

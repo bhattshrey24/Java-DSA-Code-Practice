@@ -32,13 +32,16 @@ public class MergeSort {
         // simply think of it as if we want to merge 2 arrays ie. from start to mid and from mid+1 to end
         // we will simply merge it in new array and then copy and paste it in the given array
 
-        int i = start, j = mid + 1, k = 0; // 'i' is pointing to start of 1st array and 'j' is pointing to start of 2nd array and 'k'
+        int i = start, j = mid + 1, k = 0; // 'i' is pointing to start of 1st array and 'j' is pointing to start of 2nd array
+        // and 'k' is used to fill sorted elements in newArray
 
         int newArr[] = new int[end - start + 1]; // size of the merged array is (end - start + 1) and not
         // simply 'end' because this function might be called for
         // start = 5 and end = 8 then in that case newArray size should be 4 and not 8
 
-        while (i <= mid && j <= end) {// ie. stop if any of the pointers reach end of there respective array
+        //NOTE : We assume that the 2 parts i.e. [start , mid] and [mid+1 , End] are sorted
+        while (i <= mid && j <= end) {// ie. stop if any of the pointers
+            // reach end of there respective array
             if (array[i] < array[j]) {
                 newArr[k] = array[i];
                 i++;
@@ -61,10 +64,8 @@ public class MergeSort {
         }
 
         // Now we are filling the sorted elements back to the given array
-        i = start; // we fill the given array from start
-        // till end , it's not 0 because again this function might be
-        // called with start as 5 and end as 8 or 10 or something
-        for (int z = 0; z < newArr.length; z++) {
+        i = start;
+        for (int z = 0; z < newArr.length; z++) { // newArray is sorted completely
             array[i] = newArr[z];
             i++;
         }
