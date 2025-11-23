@@ -4,7 +4,7 @@ import HashMap.HashMapImplementation;
 
 public class HMClient {
     public static void main(String[] args) {
-        HashMapImplementation<String, Integer> hm = new HashMapImplementation<>();
+        HashMapImplementation<String, Integer> hm = new HashMapImplementation<String, Integer>();
         System.out.println("Contains Red : " + hm.containsKey("Red"));
         hm.put("Violet", 50);
         hm.put("Purple", 20);

@@ -24,15 +24,17 @@ public class HeapUsingHeapify_Implementation {
 
 	public void minHeapifyArray(int arr[]) {// minHeapify cause we are creating min heap
 
-		int maxSize = arr.length;
+		int n = arr.length;
 		// here we are assuming that the array given to us is like a 'tree' which needs
-		// to
-		// be heapified i.e. converted into heap
+		// to be heapified i.e. converted into heap
 
-		for (int i = arr.length - 1; i >= 0; i--) {// ulta loop chlaenge cause leaf node se start krte hai heapify krna
-			minHeapifyArrayImple(arr, i, maxSize);// minHeapifying every element
-		}
+        for (int i = (n/2) - 1; i >= 0; i--) { // We ignore leaf nodes in heapify algorithm because they are already
+            // considered as heap so the 1st non leaf node's index
+            // from last of array is i = (n/2) - 1 therefore we start from it
+            // This way we skip processing leaf nodes which are majority of nodes
 
+            minHeapifyArrayImple(arr, i, n);
+        }
 		lastEleIdx = arr.length - 1;
 
 		// just displaying the heapified array
@@ -99,10 +101,12 @@ public class HeapUsingHeapify_Implementation {
 	}
 
 	public void display(int[] arr) {
-		System.out.println();
-		for (int ele : arr) {
+        System.out.println();
+        System.out.print("Heap Array : ");
+        for (int ele : arr) {
 			System.out.print(ele + "| ");
 		}
-	}
+        System.out.println();
+    }
 
 }

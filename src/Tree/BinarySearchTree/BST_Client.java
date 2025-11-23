@@ -11,13 +11,17 @@ public class BST_Client {
         tree.add(12);
         tree.add(37);
         tree.add(62);
-         tree.add(87);
+        tree.add(87);
         tree.add(30);
         tree.add(74);
+        System.out.println("Size : " + tree.getSize());
         tree.display();
-System.out.println(" Removing");
+        System.out.println(" Removing");
         tree.remove(378);
-        tree.display();
+        System.out.println("Size : " + tree.getSize());
+        System.out.println(" Removing");
+        tree.remove(25);
+        System.out.println("Size : " + tree.getSize());
     }
 
 }

@@ -16,9 +16,9 @@ public class HashMapImplementation<K, V> {
         }
     }
 
-    private LinkedList<HMNode>[] buckets;// array of linkedList , (N=bucket.length)
+    private LinkedList<HMNode>[] buckets;// array of linkedList
 
-    // LAMBDA = SIZE/BUCKETS.LENTGH I.E. n/N
+    // LAMBDA = SIZE/BUCKETS.LENTGH I.E. n/N (n = size = number of nodes in hashmap, N = Number of Buckets)
 
     private double K = 2.0; // this value was deduced by scientist i.e. they did lot of trial and error and
     // found that we get best time complexity if K is 2.0
@@ -51,6 +51,8 @@ public class HashMapImplementation<K, V> {
     // anything if yes then simply do Rehashing. In Rehashing we simply make an
     // array of size twice the previous one and copy all the elements in it by
     // calling put.
+
+    // Read a bit about ordered and unordered set and hashmap too
 
     public void put(K key, V value) {
         int bi = hashfn(key); // bi = bucket index which will be given to us by hash function
@@ -108,7 +110,6 @@ public class HashMapImplementation<K, V> {
         int hc = key.hashCode();
         int abshc = Math.abs(hc);// abshc = absolute hash code , in case hashCode() returns -ve code so we are
         // just converting it to positive
-
         return abshc % buckets.length; // doing modulus because we need a number from 0 to bucket.length - 1 only cause
         // it will act as a index .
     }

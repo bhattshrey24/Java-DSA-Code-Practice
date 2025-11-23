@@ -29,7 +29,7 @@ public class HeapUsingHeapify_Client {
 		minHeap.display(arr);
 		System.out.println();
 		System.out.println("Ele Deleted : "+minHeap.getMin(arr));
-		
-	}
+        minHeap.display(arr);
+    }
 
 }
