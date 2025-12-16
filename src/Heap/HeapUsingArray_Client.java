@@ -22,11 +22,13 @@ public class HeapUsingArray_Client {
 
         // Properties of Heap
         // 1) Heap is a Complete Binary Tree
-        // 2) In Max Heap root is biggest but other than root all the nodes are bigger than its direct children i.e. node.data >= node.left
-        //     and node.data >= node.right.data but its possible than a grandchildren is bigger than node so
-        //     therefore this property only applies to direct children and not grand children or grand grand children
-        // 3) There is no relationship between left and right child i.e. anyone can be
-        //    smaller than the other in min heap and anyone can be bigger than the other in max heap
+        // 2) In Max Heap the main root is the biggest element of the heap and all subtrees are heap themselves.
+        // 3) For Max Heap for every node its true that
+        //      node.data >= node.left.data
+        //      node.data >= node.right.data
+        // 4) There is no relationship between left and right child i.e. anyone can be
+        //    smaller than the other in min heap and anyone can be bigger than the other in max heap. Basically
+        //    no relation between left and right subtree of every root either
 
         // There are 2 ways to make heap :-
         //1) Normally (TC - O(n(Log(n))) )

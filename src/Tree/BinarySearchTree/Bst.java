@@ -124,9 +124,9 @@ public class Bst {
             node.right = this.remove(node.right, data);
             return node;
         } else { // this means we found the node
-            if (node.right != null && node.left != null) { // i.e. if node that we want to remove is root node then simply remove it
+            if (node.right != null && node.left != null) { // i.e. if node that we want to remove has both children
                 int lmax = max(node.left); // we can also find the right most minimum element
-                node.data = lmax;
+                node.data = lmax; // replace current node's data with lmax's data
                 node.left = remove(node.left, lmax); // basically we are
                 // telling that remove the left max element of current node
                 // and then attach the new root of the left subtree to the left of current node

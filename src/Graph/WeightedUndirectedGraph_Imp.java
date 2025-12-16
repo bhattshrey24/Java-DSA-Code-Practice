@@ -7,11 +7,11 @@ public class WeightedUndirectedGraph_Imp {
     public LinkedList<Edge> adj[];// array of linked List
 
     public WeightedUndirectedGraph_Imp(int NumberOfVertices) {
-        adj = new LinkedList[NumberOfVertices];// we are initializing adj array , we are just telling its size like int []a;
+        adj = new LinkedList[NumberOfVertices];// we are initializing adj array , we are just telling its size like :-
         // a=new int[v];
 
         for (int i = 0; i < NumberOfVertices; i++) { // assuming vertices starts from 0
-            adj[i] = new LinkedList<Edge>();// we are connecting a empty linked list to every vertex i.e element of
+            adj[i] = new LinkedList<Edge>();// we are connecting a empty linked list to every vertex i.e. element of
             // array adj
         }
 

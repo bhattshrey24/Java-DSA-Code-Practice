@@ -46,7 +46,7 @@ public class HeapUsingArray_Implementation { // We are making MIN HEAP
 
         // here we start from last and go till top
         while (heapArr[getParentIdx(currEleIdx)] > heapArr[currEleIdx]) { // this won't give index out
-            // of bound problem because we placed because parent of node 0 is 0 itself observe the
+            // of bound problem because parent of node 0 is 0 itself observe the
             // condition in while is '>' and not '>='
             int parentIdx = getParentIdx(currEleIdx);
             swapElements(heapArr, parentIdx, currEleIdx);
@@ -92,11 +92,11 @@ public class HeapUsingArray_Implementation { // We are making MIN HEAP
                 } else {
                     break;
                 }
-            } else if (currNodeLeftChildIdx < currSizeOfHeap && heapArr[currNodeLeftChildIdx] < currNodeValue) {// if current node has just left child
+            } else if (currNodeLeftChildIdx < currSizeOfHeap && heapArr[currNodeLeftChildIdx] < currNodeValue) {// if current node has just left child and it's smaller than current node
                 swapElements(heapArr, currNodeLeftChildIdx, currNodeIdx);
                 currNodeIdx = currNodeLeftChildIdx;
 
-            } else if (currNodeRightChildIdx < currSizeOfHeap && heapArr[currNodeRightChildIdx] < currNodeValue) {// if current node has just right child
+            } else if (currNodeRightChildIdx < currSizeOfHeap && heapArr[currNodeRightChildIdx] < currNodeValue) {// if current node has just right child and it's smaller than current node
                 swapElements(heapArr, currNodeRightChildIdx, currNodeIdx);
                 currNodeIdx = currNodeRightChildIdx;
 
@@ -124,11 +124,11 @@ public class HeapUsingArray_Implementation { // We are making MIN HEAP
         // In heapify we start from last element and
         // make sure all the elements below it are following heap property
 
-        int startNode = (arr.length / 2) + 1; // we don't process leaf node since
-        // they are already heap so (arr.length / 2) + 1 will take us to the
+        int startNode = (arr.length / 2) - 1; // we don't process leaf node since
+        // they are already heap so (arr.length / 2) - 1 will take us to the
         // first non leaf node from last of array
 
-        for (int i = startNode; i > 0; i--) { // we heapify elements till we reach top
+        for (int i = startNode; i >= 0; i--) { // we heapify elements till we reach top
             heapify(arr, arr.length - 1, i);
         }
 
